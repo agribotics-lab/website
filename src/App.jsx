@@ -10,6 +10,8 @@ import ContactForm from './components/ContactForm'
 import ScrollToTop from './components/ScrollToTop'
 import Footer from './components/Footer'
 
+import CertificateVerification from './pages/CertificateVerification'
+
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
     const saved = localStorage.getItem('theme')
@@ -94,6 +96,10 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutUsPage />} />
+
+          <Route
+              path="/verify/:certificateId"
+              element={<CertificateVerification />} />
         </Routes>
         <Footer />
         <ScrollToTop />
