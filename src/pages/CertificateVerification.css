@@ -1,0 +1,82 @@
+
+.verification-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  background: #FAFCF7;
+  font-family: Arial, sans-serif;
+  color: #243326;
+}
+
+.verification-card {
+  width: 100%;
+  max-width: 620px;
+  padding: 32px;
+  background: #fff;
+  border: 1px solid #e3eadf;
+  border-radius: 18px;
+  box-shadow: 0 8px 28px rgba(30, 60, 30, 0.08);
+}
+
+.verification-brand {
+  text-align: center;
+  border-bottom: 1px solid #e5eadf;
+  padding-bottom: 20px;
+  margin-bottom: 24px;
+}
+
+.verification-brand h1 {
+  color: #5BA83A;
+  margin: 0;
+}
+
+.verification-brand p {
+  color: #657362;
+  margin-bottom: 0;
+}
+
+.verification-status {
+  display: inline-block;
+  padding: 10px 14px;
+  background: #eaf6e5;
+  color: #347b25;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.certificate-type {
+  margin-top: 24px;
+  color: #657362;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.verification-card h2 {
+  font-size: 28px;
+  overflow-wrap: anywhere;
+}
+
+.certificate-details {
+  margin-top: 24px;
+  padding: 16px;
+  background: #FAFCF7;
+  border-radius: 12px;
+  overflow-wrap: anywhere;
+}
+
+.certificate-details p {
+  margin: 12px 0;
+}
+
+@media (max-width: 480px) {
+  .verification-page {
+    padding: 12px;
+  }
+
+  .verification-card {
+    padding: 22px;
+  }
+}
