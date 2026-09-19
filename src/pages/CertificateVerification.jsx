@@ -1,3 +1,4 @@
+
 import "./CertificateVerification.css";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -11,6 +12,7 @@ export default function CertificateVerification() {
   const [certificate, setCertificate] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [photoFailed, setPhotoFailed] = useState(false);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -19,6 +21,7 @@ export default function CertificateVerification() {
       setLoading(true);
       setError("");
       setCertificate(null);
+      setPhotoFailed(false);
 
       try {
         const response = await fetch(
@@ -37,7 +40,9 @@ export default function CertificateVerification() {
         setCertificate(data);
       } catch (err) {
         if (err.name !== "AbortError") {
-          setError(err.message || "Unable to load certificate.");
+          setError(
+            err.message || "Unable to load certificate."
+          );
         }
       } finally {
         if (!controller.signal.aborted) {
@@ -51,6 +56,15 @@ export default function CertificateVerification() {
     return () => controller.abort();
   }, [certificateId]);
 
+  const initials =
+    certificate?.internName
+      ?.trim()
+      .split(/\s+/)
+      .map((name) => name[0])
+      .join("")
+      .slice(0, 2)
+      .toUpperCase() || "?";
+
   return (
     <main className="verification-page">
       <div className="verification-card">
@@ -59,7 +73,9 @@ export default function CertificateVerification() {
           <p>Certificate Verification</p>
         </div>
 
-        {loading && <p>Checking certificate...</p>}
+        {loading && (
+          <p>Checking certificate...</p>
+        )}
 
         {!loading && error && (
           <div>
@@ -74,7 +90,8 @@ export default function CertificateVerification() {
               <span>
                 {certificate.status === "valid"
                   ? "✓ Certificate verified"
-                  : "Certificate status: " + certificate.status}
+                  : "Certificate status: " +
+                    certificate.status}
               </span>
             </div>
 
@@ -87,12 +104,34 @@ export default function CertificateVerification() {
                 : certificate.certificateType}
             </p>
 
-            <h2>{certificate.internName}</h2>
+            {/* Intern name and photo */}
+            <div className="intern-profile">
+              <div className="intern-info">
+                <h2>{certificate.internName}</h2>
 
-            <p>
-              This record confirms the certificate details
-              issued by AgriBotics.
-            </p>
+                <p>
+                  This record confirms the certificate
+                  details issued by AgriBotics.
+                </p>
+              </div>
+
+              <div className="intern-photo">
+                {certificate.photoUrl &&
+                !photoFailed ? (
+                  <img
+                    src={certificate.photoUrl}
+                    alt={`${certificate.internName}'s photo`}
+                    onError={() =>
+                      setPhotoFailed(true)
+                    }
+                  />
+                ) : (
+                  <div className="photo-placeholder">
+                    <span>{initials}</span>
+                  </div>
+                )}
+              </div>
+            </div>
 
             <div className="certificate-details">
               <p>
@@ -101,7 +140,8 @@ export default function CertificateVerification() {
               </p>
 
               <p>
-                <strong>Role:</strong> {certificate.role}
+                <strong>Role:</strong>{" "}
+                {certificate.role}
               </p>
 
               <p>
