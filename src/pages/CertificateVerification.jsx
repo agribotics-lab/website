@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const API_BASE =
-  "https://ffeyo1bg.execute-api.ap-south-1.amazonaws.com/prod";
+  "https://ffeyoo1b9g.execute-api.ap-south-1.amazonaws.com/prod";
 
 export default function CertificateVerification() {
   const { certificateId } = useParams();
