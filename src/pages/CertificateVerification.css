@@ -75,7 +75,72 @@
   .verification-page {
     padding: 12px;
   }
+.intern-profile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin-top: 20px;
+}
 
+.intern-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.intern-info h2 {
+  margin: 0 0 8px;
+  font-size: 28px;
+  overflow-wrap: anywhere;
+}
+
+.intern-info p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.intern-photo {
+  width: 120px;
+  height: 140px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid #e3eadf;
+  background: #FAFCF7;
+}
+
+.intern-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eaf6e5;
+  color: #347b25;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+@media (max-width: 480px) {
+  .intern-profile {
+    gap: 12px;
+  }
+
+  .intern-photo {
+    width: 90px;
+    height: 110px;
+  }
+
+  .intern-info h2 {
+    font-size: 22px;
+  }
+}
   .verification-card {
     padding: 22px;
   }
