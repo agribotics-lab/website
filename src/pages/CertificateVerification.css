@@ -54,27 +54,7 @@
   letter-spacing: 1px;
 }
 
-.verification-card h2 {
-  font-size: 28px;
-  overflow-wrap: anywhere;
-}
-
-.certificate-details {
-  margin-top: 24px;
-  padding: 16px;
-  background: #FAFCF7;
-  border-radius: 12px;
-  overflow-wrap: anywhere;
-}
-
-.certificate-details p {
-  margin: 12px 0;
-}
-
-@media (max-width: 480px) {
-  .verification-page {
-    padding: 12px;
-  }
+/* Intern name and photo layout */
 .intern-profile {
   display: flex;
   justify-content: space-between;
@@ -99,6 +79,7 @@
   line-height: 1.5;
 }
 
+/* Intern photo */
 .intern-photo {
   width: 120px;
   height: 140px;
@@ -110,11 +91,13 @@
 }
 
 .intern-photo img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
+/* Placeholder when photo is unavailable */
 .photo-placeholder {
   width: 100%;
   height: 100%;
@@ -127,7 +110,28 @@
   font-weight: 600;
 }
 
+.certificate-details {
+  margin-top: 24px;
+  padding: 16px;
+  background: #FAFCF7;
+  border-radius: 12px;
+  overflow-wrap: anywhere;
+}
+
+.certificate-details p {
+  margin: 12px 0;
+}
+
+/* Mobile responsive layout */
 @media (max-width: 480px) {
+  .verification-page {
+    padding: 12px;
+  }
+
+  .verification-card {
+    padding: 22px;
+  }
+
   .intern-profile {
     gap: 12px;
   }
@@ -139,9 +143,5 @@
 
   .intern-info h2 {
     font-size: 22px;
-  }
-}
-  .verification-card {
-    padding: 22px;
   }
 }
